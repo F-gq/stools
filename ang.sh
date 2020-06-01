@@ -103,7 +103,7 @@ fi
 echo -e '1.新建项目并生成SA\n2.在原有项目基础上生成SA\n3.仅在新建项目中生成SA\n4.不需要创建，accounts文件夹已生成SA'
 read -p "选择上面选项对应数字：" num1
 if [ $num1 -eq 1 ];then
-read -p "请输入新建项目数：" num2 && python3 gen_sa_accounts.py --quick-setup $num2
+read -p "请输入新建项目数：" num2 && cd /root/AutoRclone && python3 gen_sa_accounts.py --quick-setup $num2
 elif [ $num1 -eq 2 ];then
 python3 gen_sa_accounts.py --quick-setup -1
 elif [ $num1 -eq 3 ];then
