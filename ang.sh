@@ -138,6 +138,7 @@ mkdir -p /home/$name
 rclone mount $name: /home/$name --allow-other --allow-non-empty --vfs-cache-mode writes &
 sed -i "20s/Onedrive/$name/g" /root/.aria2c/autoupload.sh
 sed -i "23s|/DRIVEX/Download|$path|g" /root/.aria2c/autoupload.sh
+mkdir -p ~/AutoRclone/LOG/
 cd
 wget https://raw.githubusercontent.com/F-gq/stools/master/other.sh | chmod u+x other.sh
 wget https://raw.githubusercontent.com/F-gq/stools/master/av.sh | chmod u+x av.sh
