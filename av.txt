@@ -1,0 +1,1 @@
+- *.{nfo,txt,html,jpg,htm,dhtml,xhtml,shtml,mhtml,mht,ini,bmp,jpeg,gif}
