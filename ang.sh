@@ -1,11 +1,18 @@
 #!/usr/bin/bash
-#use aria2 and gclone to download or copy files.
+#aria2 and gclone.
+#Use aria2 and gclone to download or copy files.
 yum -y install updata          #安装更新
 rpm -q wget> /dev/null         #检查wget是否安装
 if [ $? -eq 0 ];then
 echo wget已安装!
 else
 yum -y install wget
+fi
+rpm -q curl> /dev/null         #检查curl是否安装
+if [ $? -eq 0 ];then
+echo curl已安装!
+else
+yum -y install curl
 fi
 rpm -q fuse> /dev/null         #检查fuse是否安装
 if [ $? -eq 0 ];then
@@ -68,6 +75,7 @@ echo gclone已重命名!
 else
 cp /usr/bin/gclone /usr/bin/rclone
 fi
+git clone https://github.com/F-gq/stools.git
 #安装AutoRclone、获取授权、生成SA、加入groups
 git clone https://github.com/xyou365/AutoRclone && cd AutoRclone && pip3 install -r requirements.txt
 echo -e '1.打开下面的链接进行授权和下载：\nhttps://developers.google.com/drive/api/v3/quickstart/python \n2.将下载好的credentials.json文件上传至服务器/root/Autorclone目录下\n'
@@ -110,9 +118,9 @@ echo 请输入上传路径，例如：根目录填/，根目录下的1文件夹�
 read -p "请输入上传路径：" path
 mkdir -p /home/$name
 rclone mount $name: /home/$name --allow-other --allow-non-empty --vfs-cache-mode writes &
+cp /root/stools/aria2.conf /root/.aria2c/aria2.conf
 sed -i "20s/Onedrive/$name/g" /root/.aria2c/autoupload.sh
 sed -i "23s|/DRIVEX/Download|$path|g" /root/.aria2c/autoupload.sh
-sed -i '193s/delete.aria2.sh/autoupload.sh/g' /root/.aria2c/aria2.conf
 service aria2 restart
 service aria2 status
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/vitaminx/gclone-assistant/master/installb.sh)"
