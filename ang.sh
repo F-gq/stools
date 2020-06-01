@@ -142,4 +142,8 @@ sed -i "20s/Onedrive/$name/g" /root/.aria2c/autoupload.sh
 sed -i "23s|/DRIVEX/Download|$path|g" /root/.aria2c/autoupload.sh
 service aria2 restart
 service aria2 status
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/vitaminx/gclone-assistant/master/installb.sh)"
+cd
+wget https://raw.githubusercontent.com/F-gq/stools/master/other.sh | chmod u+x other.sh
+wget https://raw.githubusercontent.com/F-gq/stools/master/av.sh | chmod u+x av.sh
+wget https://raw.githubusercontent.com/F-gq/stools/master/film.sh | chmod u+x film.sh
+wget https://raw.githubusercontent.com/F-gq/stools/master/film.txt
