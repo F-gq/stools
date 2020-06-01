@@ -112,7 +112,7 @@ mkdir -p /home/$name
 rclone mount $name: /home/$name --allow-other --allow-non-empty --vfs-cache-mode writes &
 sed -i "20s/Onedrive/$name/g" /root/.aria2c/autoupload.sh
 sed -i "23s|/DRIVEX/Download|$path|g" /root/.aria2c/autoupload.sh
-sed -i '189s/delete.aria2.sh/autoupload.sh/g' /root/.aria2c/aria2.conf
+sed -i '193s/delete.aria2.sh/autoupload.sh/g' /root/.aria2c/aria2.conf
 service aria2 restart
 service aria2 status
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/vitaminx/gclone-assistant/master/installb.sh)"
