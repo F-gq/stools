@@ -96,12 +96,11 @@ ls -l /root/AutoRclone/credentials.json > /dev/null
 if [ $? -ne 0 ];then
 echo -e '1.打开下面的链接进行授权和下载：\nhttps://developers.google.com/drive/api/v3/quickstart/python \n2.将下载好的credentials.json文件上传至服务器/root/Autorclone目录下\n'
 read -p "完成以上两个步骤请输入y：" confirm1
-elif [ $confirm1 = y ];then
-cd /root/AutoRclone && echo -e '1.新建项目并生成SA\n2.在原有项目基础上生成SA\n3.仅在新建项目中生成SA\n4.不需要创建，accounts文件夹已生成SA'
 else
-cd /root/AutoRclone && echo -e '1.新建项目并生成SA\n2.在原有项目基础上生成SA\n3.仅在新建项目中生成SA\n4.不需要创建，accounts文件夹已生成SA'
+cd /root/AutoRclone
 fi
 #生成SA
+echo -e '1.新建项目并生成SA\n2.在原有项目基础上生成SA\n3.仅在新建项目中生成SA\n4.不需要创建，accounts文件夹已生成SA'
 read -p "选择上面选项对应数字：" num1
 if [ $num1 -eq 1 ];then
 read -p "请输入新建项目数：" num2 && python3 gen_sa_accounts.py --quick-setup $num2
@@ -137,13 +136,13 @@ echo 请输入上传路径，例如：根目录填/，根目录下的1文件夹�
 read -p "请输入上传路径：" path
 mkdir -p /home/$name
 rclone mount $name: /home/$name --allow-other --allow-non-empty --vfs-cache-mode writes &
-cp /root/stools/aria2.conf /root/.aria2c/aria2.conf
 sed -i "20s/Onedrive/$name/g" /root/.aria2c/autoupload.sh
 sed -i "23s|/DRIVEX/Download|$path|g" /root/.aria2c/autoupload.sh
-service aria2 restart
-service aria2 status
 cd
 wget https://raw.githubusercontent.com/F-gq/stools/master/other.sh | chmod u+x other.sh
 wget https://raw.githubusercontent.com/F-gq/stools/master/av.sh | chmod u+x av.sh
 wget https://raw.githubusercontent.com/F-gq/stools/master/film.sh | chmod u+x film.sh
 wget https://raw.githubusercontent.com/F-gq/stools/master/film.txt
+wget https://raw.githubusercontent.com/F-gq/stools/master/aria2.conf && \cp -f /root/aria2.conf /root/.aria2c/aria2.conf
+service aria2 restart
+service aria2 status
