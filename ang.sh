@@ -145,4 +145,3 @@ wget https://raw.githubusercontent.com/F-gq/stools/master/film.sh | chmod u+x fi
 wget https://raw.githubusercontent.com/F-gq/stools/master/film.txt
 wget https://raw.githubusercontent.com/F-gq/stools/master/aria2.conf && \cp -f /root/aria2.conf /root/.aria2c/aria2.conf
 service aria2 restart
-service aria2 status
