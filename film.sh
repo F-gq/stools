@@ -30,7 +30,7 @@ if [[ ! -d "gclone lsd team:{0AEb0Xiyv-80MUk9PVA}" ]]; then
 else
   echo "$folderName"
 fi
-id=$0AEb0Xiyv-80MUk9PVA
+id=0AEb0Xiyv-80MUk9PVA
 j=$(gclone lsd team:{$id} --dump bodies -vv 2>&1 | grep '^{"id"' | grep $id) BackupfolderName1=$(echo $j | grep -Po '(?<="name":")[^"]*')
 echo "备份1将存入分类目录："$BackupfolderName1/$folderName/$rootName
 echo '备份1拷贝日志文件将保存在：/root/AutoRclone/LOG/'"$rootName"'_backup1.txt'
@@ -51,7 +51,7 @@ if [[ ! -d "gclone lsd team:{0APiVGMdIpoc-Uk9PVA}" ]]; then
 else
   echo "$folderName"
 fi
-id=$0APiVGMdIpoc-Uk9PVA
+id=0APiVGMdIpoc-Uk9PVA
 j=$(gclone lsd team:{$id} --dump bodies -vv 2>&1 | grep '^{"id"' | grep $id) BackupfolderName2=$(echo $j | grep -Po '(?<="name":")[^"]*')
 echo "备份2将存入分类目录："$BackupfolderName2/$folderName/$rootName
 echo '备份2拷贝日志文件将保存在：/root/AutoRclone/LOG/'"$rootName"'_backup2.txt'

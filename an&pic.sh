@@ -16,13 +16,13 @@ echo '拷贝日志文件将保存在：/root/AutoRclone/LOG/'"$rootName"'.txt'
 echo '查漏日志文件将保存在：/root/AutoRclone/LOG/'"$rootName"'_check.txt'
 echo '去重日志文件将保存在：/root/AutoRclone/LOG/'"$rootName"'_dedupe.txt'
 echo 【开始拷贝】......
-#echo gclone copy team:{$link} "team:{$folderid}/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'.txt'
-gclone copy team:{$link} "team:{$folderid}/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'.txt'
+#echo gclone copy team:{$link} "team:{$folderid}/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'.txt'
+gclone copy team:{$link} "team:{$folderid}/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'.txt'
 echo 【查缺补漏】......
-#echo gclone copy team:{$link} "team:{$folderid}/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check.txt'
-gclone copy team:{$link} "team:{$folderid}/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check.txt'
+#echo gclone copy team:{$link} "team:{$folderid}/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check.txt'
+gclone copy team:{$link} "team:{$folderid}/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check.txt'
 echo 【去重检查】......
-#echo gclone dedupe newest "team:{$folderid}/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --log-file=/root/AutoRclone/LOG/"$rootName"'_dedupe.txt'
+#echo gclone dedupe newest "team:{$folderid}/$rootName" --drive-server-side-across-configs -vvP --log-file=/root/AutoRclone/LOG/"$rootName"'_dedupe.txt'
 gclone dedupe newest "team:{$folderid}/$rootName" --drive-server-side-across-configs -vvP --log-file=/root/AutoRclone/LOG/"$rootName"'_dedupe.txt'
 
 if [[ ! -d "gclone lsd team:{0AEb0Xiyv-80MUk9PVA}" ]]; then
@@ -37,13 +37,13 @@ echo '备份1拷贝日志文件将保存在：/root/AutoRclone/LOG/'"$rootName"'
 echo '备份1查漏日志文件将保存在：/root/AutoRclone/LOG/'"$rootName"'_check_backup1.txt'
 echo '备份1去重日志文件将保存在：/root/AutoRclone/LOG/'"$rootName"'_dedupe_backup1.txt'
 echo 【开始拷贝】......
-#echo gclone copy team:{$link} "team:{0AEb0Xiyv-80MUk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_backup1.txt'
-gclone copy team:{$link} "team:{0AEb0Xiyv-80MUk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_backup1.txt'
+#echo gclone copy team:{$link} "team:{0AEb0Xiyv-80MUk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_backup1.txt'
+gclone copy team:{$link} "team:{0AEb0Xiyv-80MUk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_backup1.txt'
 echo 【查缺补漏】......
-#echo gclone copy team:{$link} "team:{0AEb0Xiyv-80MUk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check_backup1.txt'
-gclone copy team:{$link} "team:{0AEb0Xiyv-80MUk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check_backup1.txt'
+#echo gclone copy team:{$link} "team:{0AEb0Xiyv-80MUk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check_backup1.txt'
+gclone copy team:{$link} "team:{0AEb0Xiyv-80MUk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check_backup1.txt'
 echo 【去重检查】......
-#echo gclone dedupe newest "team:{0AEb0Xiyv-80MUk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --log-file=/root/AutoRclone/LOG/"$rootName"'_dedupe_backup1.txt'
+#echo gclone dedupe newest "team:{0AEb0Xiyv-80MUk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --log-file=/root/AutoRclone/LOG/"$rootName"'_dedupe_backup1.txt'
 gclone dedupe newest "team:{0AEb0Xiyv-80MUk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --log-file=/root/AutoRclone/LOG/"$rootName"'_dedupe_backup1.txt'
 
 if [[ ! -d "gclone lsd team:{0APiVGMdIpoc-Uk9PVA}" ]]; then
@@ -58,13 +58,13 @@ echo '备份2拷贝日志文件将保存在：/root/AutoRclone/LOG/'"$rootName"'
 echo '备份2查漏日志文件将保存在：/root/AutoRclone/LOG/'"$rootName"'_check_backup2.txt'
 echo '备份2去重日志文件将保存在：/root/AutoRclone/LOG/'"$rootName"'_dedupe_backup2.txt'
 echo 【开始拷贝】......
-#echo gclone copy team:{$link} "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_backup2.txt'
-gclone copy team:{$link} "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_backup2.txt'
+#echo gclone copy team:{$link} "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_backup2.txt'
+gclone copy team:{$link} "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_backup2.txt'
 echo 【查缺补漏】......
-#echo gclone copy team:{$link} "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check_backup2.txt'
-gclone copy team:{$link} "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check_backup2.txt'
+#echo gclone copy team:{$link} "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check_backup2.txt'
+gclone copy team:{$link} "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --transfers=20 --log-file=/root/AutoRclone/LOG/"$rootName"'_check_backup2.txt'
 echo 【去重检查】......
-#echo gclone dedupe newest "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --log-file=/root/AutoRclone/LOG/"$rootName"'_dedupe_backup2.txt'
+#echo gclone dedupe newest "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --log-file=/root/AutoRclone/LOG/"$rootName"'_dedupe_backup2.txt'
 gclone dedupe newest "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --log-file=/root/AutoRclone/LOG/"$rootName"'_dedupe_backup2.txt'
 
 #./gd.sh
