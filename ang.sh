@@ -114,13 +114,11 @@ ls -d /root/AutoRclone/accounts
 else
 echo "输入错误请重新输入" && exit 0
 fi
-#检查SA账号是否生成
-cat ~/AutoRclone/accounts/*.json > /dev/null
-if [ $? = 0 ];then
+#检查email.txt是否生成
+cat ~/AutoRclone/email.txt > /dev/null
+if [ $? -ne 0 ];then
 cat ~/AutoRclone/accounts/*.json | grep "client_email" | awk '{print $2}'| tr -d ',"' | sed 'N;N;N;N;N;N;N;N;N;/^$/d;G' > /root/AutoRclone/email.txt
 sz /root/AutoRclone/email.txt
-else
-echo 请重新生成SA && exit 0
 fi
 #添加SA到群组
 echo -e "1.打开右侧网址新建群组：https://groups.google.com \n2.打开刚刚下载的email.txt文件。每10个一组向群组添加成员\n3.将群组账号和邮箱账号添加至团队盘。"
