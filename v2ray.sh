@@ -24,22 +24,14 @@ fi
 # 首先要检查是否安装bbr
 lsmod | grep bbr > /dev/null
 if [ $? -eq 0 ];then
-echo bbr已安装
+echo bbr已安装 && wget http://soft.vpser.net/lnmp/lnmp1.6.tar.gz -cO lnmp1.6.tar.gz && tar zxf lnmp1.6.tar.gz && cd lnmp1.6 && ./install.sh lnmp
 else
 wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && bash bbr.sh           # 此处会重启
 fi
-lsmod | grep bbr > /dev/null
+lnmp vhost add
+ll /etc/systemd/system/v2ray.service > /dev/null
 if [ $? -eq 0 ];then
-screen -S lnmp
-wget http://soft.vpser.net/lnmp/lnmp1.6.tar.gz -cO lnmp1.6.tar.gz && tar zxf lnmp1.6.tar.gz && cd lnmp1.6 && ./install.sh lnmp 
+echo v2ray已安装
 else
-echo 请重新运行脚本安装bbr && exit
-if
 wget https://install.direct/go.sh && sudo bash go.sh
-read -p "请输入域名" domain
-read -p "qi"
-#生成uuid：cat /proc/sys/kernel/random/uuid
-# read命令写入域名、反代域名，v2的id、传输协议、路径
-# 根据read的变量将相关内容写入配置文件。
-systemctl restart v2ray  
-nginx -s reload
+fi
