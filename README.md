@@ -9,3 +9,6 @@
 3. `vim /usr/local/nginx/conf/vhost/$domain.conf && nginx -s reload`
 4. `vim /etc/v2ray.conf && sudo systemctl restart v2ray  && sudo systemctl status v2ray`
 
+## install gclone&aria2
+
+1. `wget https://github.com/F-gq/stools/blob/master/ang.sh && bash ang.sh`
