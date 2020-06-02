@@ -29,10 +29,11 @@ else
 wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && bash bbr.sh           # 此处会重启
 fi
 lnmp vhost add
-ll /etc/systemd/system/v2ray.service > /dev/null
+ls -l /etc/systemd/system/v2ray.service > /dev/null
 if [ $? -eq 0 ];then
 echo v2ray已安装
 else
 wget https://install.direct/go.sh && sudo bash go.sh
 fi
-cd /usr/local/nginx/conf/vhost/ 
+
+cd /usr/local/nginx/conf/vhost/
