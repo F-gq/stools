@@ -112,7 +112,7 @@ python3 gen_sa_accounts.py --quick-setup $num3 --new-only
 elif [ $num1 -eq 4 ];then
 ls -d /root/AutoRclone/accounts
 else
-echo "输入错误请重新输入" && exit 0
+echo "输入错误请重新执行脚本" && exit 0
 fi
 #检查email.txt是否生成
 cat ~/AutoRclone/email.txt > /dev/null
