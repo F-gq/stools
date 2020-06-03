@@ -67,4 +67,4 @@ echo 【去重检查】......
 #echo gclone dedupe newest "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --min-size 500M --log-file=/root/AutoRclone/LOG/"$rootName"'_dedupe_backup2.txt'
 gclone dedupe newest "team:{0APiVGMdIpoc-Uk9PVA}/$folderName/$rootName" --drive-server-side-across-configs -vvP --log-file=/root/AutoRclone/LOG/"$rootName"'_dedupe_backup2.txt'
 
-#./gd.sh123456
+#./gd.sh
