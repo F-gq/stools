@@ -13,13 +13,13 @@ read -p "请输入你的选择:" num
 if [ $num = 1 ]; then
     read -p "请输入rclone配置的硬盘名称：" name1 && rclone delete $name1: --drive-trashed-only --drive-use-trash=false
 elif [ $num = 2 ]; then
-    read -p "请输入压缩文件路径：" spath && mkdir /home/sort/已解压$spath
-    read -p "请输入解压路径：" dpath
+    read -p "请输入压缩文件路径：" file && mkdir /home/sort/已解压$file
     read -p "请输入解压密码（没有则回车）" passwd
     read -p "请输入解压编码（不需要则回车）" encode
     if [ -z $passwd && -z $encode ]; then
-        7z x $path -o/已解压$spath
-    elif [ condition ]; then
+        7z x $file -o/home/sort/已解压$file
+    elif [ -n $passwd && -z $encode ]; then
+        7z x -p$passwd $file -o/home/sort/已解压$file
         # body
     else
         # body
