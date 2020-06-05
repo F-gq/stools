@@ -36,3 +36,4 @@ else
 wget https://install.direct/go.sh && sudo bash go.sh
 fi
 cd /usr/local/nginx/conf/vhost/
+cat <<-EOF >
