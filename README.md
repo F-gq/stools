@@ -5,10 +5,8 @@
 ## install v2ray
 
 1. check system time and set time.
-2. `yum -y install wget && https://raw.githubusercontent.com/F-gq/stools/master/v2ray.sh && . v2ray.sh`
-3. `vim /usr/local/nginx/conf/vhost/$domain.conf && nginx -s reload`
-4. `vim /etc/v2ray.conf && sudo systemctl restart v2ray  && sudo systemctl status v2ray`
+2. `yum -y install wget && wget https://raw.githubusercontent.com/F-gq/stools/master/v2ray.sh && bash v2ray.sh`
 
 ## install gclone&aria2
 
-1. `wget https://github.com/F-gq/stools/blob/master/ang.sh && bash ang.sh`
+1. `yum -y install wget && wget https://raw.githubusercontent.com/F-gq/stools/master/ang.sh && bash ang.sh`
