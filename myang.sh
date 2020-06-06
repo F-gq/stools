@@ -11,7 +11,7 @@ rpm -q python3 >/dev/null && echo "python3已安装." || yum -y install python3 
 rpm -q python3-pip >/dev/null && echo "python3-pip已安装." || yum -y install python3-pip          #安装python3-pip
 [ -e /usr/bin/gclone ] && echo "gclone已安装." || bash <(wget -qO- https://git.io/gclone.sh)      #安装gclone
 [ -e /usr/bin/rclone ] && echo "gclone已重命名." || cp /usr/bin/gclone /usr/bin/rclone            #重命名gclone
-git clone https://github.com/F-gq/AutoRclone.git && \mv -f /root/AutoRclone/rclone.conf /root/.config/rclone    #安装AutoRclone
+git clone https://github.com/F-gq/AutoRclone.git && \mv -f /root/AutoRclone/rclone.conf /root/.config/rclone/    #安装AutoRclone
 if [ -e /usr/local/bin/aria2c ]; then                                                            #检查aria2是否安装
     echo aria2已安装!
 else
