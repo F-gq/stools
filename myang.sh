@@ -1,5 +1,12 @@
 #!/usr/bin/bash
 #aria2 and gclone.Use aria2 and gclone to download,manage and copy files.
+#ssh修复断联脚本
+sed -i '112s/0/30/g' /etc/ssh/sshd_config
+sed -i '113s/3/9/g' /etc/ssh/sshd_config
+sed -i '107s/#//g' /etc/ssh/sshd_config
+sed -i '112s/#//g' /etc/ssh/sshd_config
+sed -i '113s/#//g' /etc/ssh/sshd_config
+service sshd restart
 yum -y install updata                                                                            #安装更新
 rpm -q git >/dev/null && echo "git已安装." || yum -y install git                                  #安装git
 rpm -q wget >/dev/null && echo "wget已安装." || yum -y install wget                               #安装wget

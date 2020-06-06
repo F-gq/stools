@@ -1,5 +1,12 @@
 #!/usr/bin/bash
 cd
+#修复ssh断连
+sed -i '112s/0/30/g' /etc/ssh/sshd_config
+sed -i '113s/3/9/g' /etc/ssh/sshd_config
+sed -i '107s/#//g' /etc/ssh/sshd_config
+sed -i '112s/#//g' /etc/ssh/sshd_config
+sed -i '113s/#//g' /etc/ssh/sshd_config
+service sshd restart
 yum -y install updata
 wget https://raw.githubusercontent.com/F-gq/stools/master/domain.conf
 wget https://raw.githubusercontent.com/F-gq/stools/master/v2ray.json
