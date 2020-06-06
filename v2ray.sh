@@ -1,8 +1,6 @@
+#!/usr/bin/bash
 cd
 yum -y install updata
-rpm -q wget > /dev/null && echo wget已安装! || yum -y install wget
-rpm -q vim > /dev/null && echo vim已安装! || yum -y install vim
-rpm -q screen > /dev/null && echo screen已安装! || yum -y install screen
 wget https://raw.githubusercontent.com/F-gq/stools/master/domain.conf
 wget https://raw.githubusercontent.com/F-gq/stools/master/v2ray.json
 lsmod | grep bbr > /dev/null
@@ -15,17 +13,18 @@ lnmp vhost add
 [ -e /etc/systemd/system/v2ray.service ] && echo v2ray已安装 || wget https://install.direct/go.sh && bash go.sh
 read -p "请输入设置域名：" domain
 read -p "请输入反代域名：" proxydomain
-read -p "请输入id：" id
+read -p "请输入alterid(数字)：" alterid
 read -p "请输入分流路径：" path
 read -p "请输入端口：" port
-alterid=$(cat /proc/sys/kernel/random/uuid)
-sed -i "s/\$domain/$domain/g" domain.conf
-sed -i "s/\$proxydomain/$proxydomain/g" domain.conf
-sed -i "s/\$path/$path/g" domain.conf
-sed -i "s/\$port/$port/g" domain.conf
-sed -i "s/\$port/$port/g" v2ray.json
-sed -i "s/\$id/$id/g" v2ray.json
-sed -i "s/\$alterid/$alterid/g" v2ray.json
+id=$(cat /proc/sys/kernel/random/uuid)
+sed -i "s/\$domain/$domain/g" /root/domain.conf
+sed -i "s/\$proxydomain/$proxydomain/g" /root/domain.conf
+sed -i "s|path|$path|g" /root/domain.conf                      #解决sed中环境变量替换
+sed -i "s/\$port/$port/g" /root/domain.conf
+sed -i "s/\$port/$port/g" /root/v2ray.json
+sed -i "s|path|$path|g" /root/v2ray.json
+sed -i "s/\$id/$id/g" /root/v2ray.json
+sed -i "s/\$alterid/$alterid/g" /root/v2ray.json
 \mv -f /root/domain.conf "/usr/local/nginx/conf/vhost/$domain.conf"
 \mv -f /root/v2ray.json /etc/v2ray/config.json
 nginx -s reload
