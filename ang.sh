@@ -25,7 +25,6 @@ fi
 #安装AutoRclone、获取授权、生成SA、加入groups
 git clone https://github.com/xyou365/AutoRclone && cd AutoRclone && pip3 install -r requirements.txt
 #检查是否生成凭证并放入AutoRclone文件夹
-ls -l /root/AutoRclone/credentials.json >/dev/null
 if [ -e /root/AutoRclone/credentials.json ]; then
     cd /root/AutoRclone
 else
@@ -47,7 +46,7 @@ elif [ $num1 -eq 3 ]; then
     read -p "请输入新建项目数：" num3
     cd /root/AutoRclone && python3 gen_sa_accounts.py --quick-setup $num3 --new-only
 elif [ $num1 -eq 4 ]; then
-    num7=$(ll /root/AutoRclone/accounts/ | wc -l)
+    num7=$(ls -l /root/AutoRclone/accounts/ | wc -l)
     if [ $num7 -gt 1 ]; then
         [ -e ~/AutoRclone/email.txt ] || cat ~/AutoRclone/accounts/*.json | grep "client_email" | awk '{print $2}' | tr -d ',"' | sed 'N;N;N;N;N;N;N;N;N;/^$/d;G' >/root/AutoRclone/email.txt && sz /root/AutoRclone/email.txt
     else
@@ -76,5 +75,5 @@ wget https://raw.githubusercontent.com/F-gq/stools/master/other.sh && chmod u+x 
 wget https://raw.githubusercontent.com/F-gq/stools/master/av.sh && chmod u+x av.sh
 wget https://raw.githubusercontent.com/F-gq/stools/master/film.sh && chmod u+x film.sh
 wget https://raw.githubusercontent.com/F-gq/stools/master/film.txt
-wget https://raw.githubusercontent.com/F-gq/stools/master/aria2.conf && \cp -f /root/aria2.conf /root/.aria2c/aria2.conf
+wget https://raw.githubusercontent.com/F-gq/stools/master/aria2.conf && \cp -f /root/aria2.conf /root/.aria2c/aria2.conf && rm -rf /root/aria2.conf
 service aria2 restart
