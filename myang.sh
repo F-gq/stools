@@ -2,6 +2,7 @@
 #aria2 and gclone.Use aria2 and gclone to download,manage and copy files.
 yum -y install updata                                                                            #安装更新
 rpm -q git >/dev/null && echo "git已安装." || yum -y install git                                  #安装git
+rpm -q wget >/dev/null && echo "wget已安装." || yum -y install wget                               #安装wget
 rpm -q fuse >/dev/null && echo "fuse已安装." || yum -y install fuse                               #安装fuse
 rpm -q lrzsz >/dev/null && echo "lrzsz已安装." || yum -y install lrzsz                            #安装lrzsz
 rpm -q unzip >/dev/null && echo "unzip已安装." || yum -y install unzip                            #安装unzip
