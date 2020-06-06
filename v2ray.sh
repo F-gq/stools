@@ -27,7 +27,7 @@ sed -i "s/\$port/$port/g" v2ray.json
 sed -i "s/\$id/$id/g" v2ray.json
 sed -i "s/\$alterid/$alterid/g" v2ray.json
 \mv -f /root/domain.conf "/usr/local/nginx/conf/vhost/$domain.conf"
-\mv -f /root/v2ray.json "config.json"
+\mv -f /root/v2ray.json /etc/v2ray/config.json
 nginx -s reload
 systemctl restart v2ray
 systemctl status v2ray
