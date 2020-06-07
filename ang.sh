@@ -3,17 +3,17 @@
 #Use aria2 and gclone to download or copy files.
 #安装更新和必备软件
 yum -y install updata
-rpm -q git >/dev/null && echo -e "\e[1;32mgit已安装.\e[0m" || yum -y install git
-rpm -q wget >/dev/null && echo  -e "\e[1;32mwget已安装.\e[0m" || yum -y install wget
-rpm -q curl >/dev/null && echo  -e "\e[1;32mcurl已安装.\e[0m" || yum -y install curl
-rpm -q fuse >/dev/null && echo  -e "\e[1;32mfuse已安装.\e[0m" || yum -y install fuse
-rpm -q lrzsz >/dev/null && echo  -e "\e[1;32mlrzsz已安装.\e[0m" || yum -y install lrzsz
-rpm -q unzip >/dev/null && echo  -e "\e[1;32munzip已安装.\e[0m" || yum -y install unzip
-rpm -q screen >/dev/null && echo  -e "\e[1;32mscreen已安装.\e[0m" || yum -y install screen
-rpm -q python3 >/dev/null && echo  -e "\e[1;32mpython3已安装.\e[0m" || yum -y install python3
-rpm -q python3-pip >/dev/null && echo  -e "\e[1;32mpython3-pip已安装.\e[0m" || yum -y install python3-pip
-[ -e /usr/bin/gclone ] && echo  -e "\e[1;32mgclone已安装.\e[0m" || bash <(wget -qO- https://git.io/gclone.sh)
-[ -e /usr/bin/rclone ] && echo  -e "\e[1;32mgclone已重命名.\e[0m" || cp /usr/bin/gclone /usr/bin/rclone
+rpm -q git &>/dev/null && echo -e "\e[1;32mgit已安装.\e[0m" || yum -y install git
+rpm -q wget &>/dev/null && echo -e "\e[1;32mwget已安装.\e[0m" || yum -y install wget
+rpm -q curl &>/dev/null && echo -e "\e[1;32mcurl已安装.\e[0m" || yum -y install curl
+rpm -q fuse &>/dev/null && echo -e "\e[1;32mfuse已安装.\e[0m" || yum -y install fuse
+rpm -q lrzsz &>/dev/null && echo -e "\e[1;32mlrzsz已安装.\e[0m" || yum -y install lrzsz
+rpm -q unzip &>/dev/null && echo -e "\e[1;32munzip已安装.\e[0m" || yum -y install unzip
+rpm -q screen &>/dev/null && echo -e "\e[1;32mscreen已安装.\e[0m" || yum -y install screen
+rpm -q python3 &>/dev/null && echo -e "\e[1;32mpython3已安装.\e[0m" || yum -y install python3
+rpm -q python3-pip &>/dev/null && echo -e "\e[1;32mpython3-pip已安装.\e[0m" || yum -y install python3-pip
+[ -e /usr/bin/gclone ] && echo -e "\e[1;32mgclone已安装.\e[0m" || bash <(wget -qO- https://git.io/gclone.sh)
+[ -e /usr/bin/rclone ] && echo -e "\e[1;32mgclone已重命名.\e[0m" || cp /usr/bin/gclone /usr/bin/rclone
 [ -e /usr/local/bin/aria2c ] && echo -e "\e[1;32maria2已安装\e[0m" || bash <(curl https://raw.githubusercontent.com/P3TERX/aria2.sh/master/aria2.sh)
 curl -fsSL https://raw.githubusercontent.com/F-gq/stools/master/aria2.conf >aria2.conf && \mv -f /root/aria2.conf /root/.aria2c/
 git clone https://github.com/xyou365/AutoRclone && cd ~/AutoRclone && pip3 install -r requirements.txt
@@ -55,5 +55,6 @@ echo 请输入上传路径，例如：根目录填/，根目录下的1文件夹�
 read -p "请输入上传路径：" path
 mkdir -p /home/$name ~/AutoRclone/LOG/
 rclone mount $name: /home/$name --allow-other --allow-non-empty --vfs-cache-mode writes &
-sed -i "20s/Onedrive/$name/g" /root/.aria2c/autoupload.sh;sed -i "23s|/DRIVEX/Download|$path|g" /root/.aria2c/autoupload.sh
+sed -i "20s/Onedrive/$name/g" /root/.aria2c/autoupload.sh
+sed -i "23s|/DRIVEX/Download|$path|g" /root/.aria2c/autoupload.sh
 cd && sh -c "$(curl -fsSL https://raw.githubusercontent.com/vitaminx/gclone-assistant/master/installa.sh)"
