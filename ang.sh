@@ -2,35 +2,21 @@
 #aria2 and gclone.
 #Use aria2 and gclone to download or copy files.
 #安装更新和必备软件
-#ssh修复断联脚本
-sed -i '112s/0/30/g' /etc/ssh/sshd_config
-sed -i '113s/3/9/g' /etc/ssh/sshd_config
-sed -i '107s/#//g' /etc/ssh/sshd_config
-sed -i '112s/#//g' /etc/ssh/sshd_config
-sed -i '113s/#//g' /etc/ssh/sshd_config
-service sshd restart
 yum -y install updata
-rpm -q git >/dev/null && echo "git已安装." || yum -y install git
-rpm -q wget >/dev/null && echo "wget已安装." || yum -y install wget
-rpm -q curl >/dev/null && echo "curl已安装." || yum -y install curl
-rpm -q fuse >/dev/null && echo "fuse已安装." || yum -y install fuse
-rpm -q lrzsz >/dev/null && echo "lrzsz已安装." || yum -y install lrzsz
-rpm -q unzip >/dev/null && echo "unzip已安装." || yum -y install unzip
-rpm -q screen >/dev/null && echo "screen已安装." || yum -y install screen
-rpm -q python3 >/dev/null && echo "python3已安装." || yum -y install python3
-rpm -q python3-pip >/dev/null && echo "python3-pip已安装." || yum -y install python3-pip
-[ -e /usr/bin/gclone ] && echo "gclone已安装." || bash <(wget -qO- https://git.io/gclone.sh)
-[ -e /usr/bin/rclone ] && echo "gclone已重命名." || cp /usr/bin/gclone /usr/bin/rclone
-#检查aria2是否安装
-if [ -e /usr/local/bin/aria2c ]; then
-    echo aria2已安装!
-else
-    wget https://raw.githubusercontent.com/P3TERX/aria2.sh/master/aria2.sh && chmod +x aria2.sh && ./aria2.sh
-    curl -fsSL https://raw.githubusercontent.com/F-gq/stools/master/aria2.conf >aria2.conf
-    \cp -f /root/aria2.conf /root/.aria2c/
-fi
-#安装AutoRclone、获取授权、生成SA、加入groups
-git clone https://github.com/xyou365/AutoRclone && cd AutoRclone && pip3 install -r requirements.txt
+rpm -q git >/dev/null && echo -e "\e[1;32mgit已安装.\e[0m" || yum -y install git
+rpm -q wget >/dev/null && echo  -e "\e[1;32mwget已安装.\e[0m" || yum -y install wget
+rpm -q curl >/dev/null && echo  -e "\e[1;32mcurl已安装.\e[0m" || yum -y install curl
+rpm -q fuse >/dev/null && echo  -e "\e[1;32mfuse已安装.\e[0m" || yum -y install fuse
+rpm -q lrzsz >/dev/null && echo  -e "\e[1;32mlrzsz已安装.\e[0m" || yum -y install lrzsz
+rpm -q unzip >/dev/null && echo  -e "\e[1;32munzip已安装.\e[0m" || yum -y install unzip
+rpm -q screen >/dev/null && echo  -e "\e[1;32mscreen已安装.\e[0m" || yum -y install screen
+rpm -q python3 >/dev/null && echo  -e "\e[1;32mpython3已安装.\e[0m" || yum -y install python3
+rpm -q python3-pip >/dev/null && echo  -e "\e[1;32mpython3-pip已安装.\e[0m" || yum -y install python3-pip
+[ -e /usr/bin/gclone ] && echo  -e "\e[1;32mgclone已安装.\e[0m" || bash <(wget -qO- https://git.io/gclone.sh)
+[ -e /usr/bin/rclone ] && echo  -e "\e[1;32mgclone已重命名.\e[0m" || cp /usr/bin/gclone /usr/bin/rclone
+[ -e /usr/local/bin/aria2c ] && echo -e "\e[1;32maria2已安装\e[0m" || bash <(https://raw.githubusercontent.com/P3TERX/aria2.sh/master/aria2.sh)
+curl -fsSL https://raw.githubusercontent.com/F-gq/stools/master/aria2.conf >aria2.conf && \mv -f /root/aria2.conf /root/.aria2c/
+git clone https://github.com/xyou365/AutoRclone && cd ~/AutoRclone && pip3 install -r requirements.txt
 #检查是否生成凭证并放入AutoRclone文件夹
 if [ -e /root/AutoRclone/credentials.json ]; then
     cd /root/AutoRclone
@@ -82,5 +68,4 @@ wget https://raw.githubusercontent.com/F-gq/stools/master/other.sh && chmod u+x 
 wget https://raw.githubusercontent.com/F-gq/stools/master/av.sh && chmod u+x av.sh
 wget https://raw.githubusercontent.com/F-gq/stools/master/film.sh && chmod u+x film.sh
 wget https://raw.githubusercontent.com/F-gq/stools/master/film.txt
-wget https://raw.githubusercontent.com/F-gq/stools/master/aria2.conf && \cp -f /root/aria2.conf /root/.aria2c/aria2.conf && rm -rf /root/aria2.conf
 service aria2 restart
