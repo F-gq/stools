@@ -10,11 +10,7 @@ wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh
 fi
 lnmp vhost add
 [ -e /etc/systemd/system/v2ray.service ] && echo -e "\e[1;32mv2ray已安装\e[0m" || wget https://install.direct/go.sh && bash go.sh
-read -p "请输入设置域名：" domain
-read -p "请输入反代域名：" proxydomain
-read -p "请输入alterid(数字)：" alterid
-read -p "请输入分流路径：" path
-read -p "请输入端口：" port
+read -p "请依次输入域名、反代域名、alterid(数字)、分流路径、端口号，用空格隔开：" domain proxydomain alterid path port
 id=$(cat /proc/sys/kernel/random/uuid)
 sed -i "s/\$domain/$domain/g" /root/domain.conf
 sed -i "s/\$proxydomain/$proxydomain/g" /root/domain.conf
