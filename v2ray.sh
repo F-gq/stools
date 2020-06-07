@@ -1,9 +1,8 @@
 #!/usr/bin/bash
-cd
-yum -y install updata
+cd && yum -y install updata
 [ -e /root/domain.conf ] && echo -e "\e[1;32mdomain.conf已存在。\e[0m" || wget https://raw.githubusercontent.com/F-gq/stools/master/domain.conf
 [ -e /root/v2ray.json ] && echo -e "\e[1;32mv2ray.json已存在。\e[0m" || wget https://raw.githubusercontent.com/F-gq/stools/master/v2ray.json
-lsmod | grep bbr > /dev/null
+lsmod | grep bbr &> /dev/null
 if [ $? -eq 0 ];then
 echo -e "\e[1;32mbbr已安装\e[0m" && wget http://soft.vpser.net/lnmp/lnmp1.6.tar.gz -cO lnmp1.6.tar.gz && tar zxf lnmp1.6.tar.gz && cd lnmp1.6 && ./install.sh lnmp
 else
