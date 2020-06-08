@@ -37,10 +37,16 @@ elif [ $num -eq 7 ]; then
 elif [ $num -eq 8 ]; then
     read -p "请输入文件（夹）路径：" path && export path
     if [ -d $path ]; then
-        nohup ls -Al $path | grep -E '.*zip|.*rar|.*tar|.*gz|.*7z' | awk '{print $9}' | xargs -i unar -f $path/{} -o /home/virginia/已解压/11 &>/dev/null &
+        nohup ls -Al $path | grep -E '.*zip|.*rar|.*tar|.*gz|.*7z' | awk '{print $9}' | xargs -i unar -f $path/{} -o /home/virginia/已解压/12 &>/dev/null &
     else
         read -p "请输入指定编码方式（乱码时使用，无则回车）：" encode
-        [ -z "$encode" ] && nohup unar $path -o /home/virginia/已解压/11 &>/dev/null & || nohup unar -e $encode $path -o /home/virginia/已解压/11 &>/dev/null &
+        if [ -z "$encode" ]; then
+            nohup unar $path -o /home/virginia/已解压/12 &
+            echo -e "\e[1;32m请先输入回车，再输入tail -f nohup.out查看解压详情\e[0m"
+        else
+            nohup unar -e $encode $path -o /home/virginia/已解压/12 &
+            echo -e "\e[1;32m请先输入回车，再输入tail -f nohup.out查看解压详情\e[0m"
+        fi
     fi
 elif [ $num -eq 9 ]; then
     read -p "请输入gclone配置的网盘名称：" name && fusermount -qzu /home/$name
@@ -52,3 +58,5 @@ elif [ $num -eq 10 ]; then
 else
     echo -e "\e[1;31m输入错误！\e[0m" && exit
 fi
+
+#ang.sh
