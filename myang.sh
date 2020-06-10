@@ -12,7 +12,7 @@ rpm -q python3-pip &>/dev/null && echo -e "\e[1;32mpython3-pip已安装.\e[0m" |
 [ -e /usr/bin/gclone ] && echo -e "\e[1;32mgclone已安装.\e[0m" || bash <(wget -qO- https://git.io/gclone.sh)      #安装gclone
 [ -e /usr/bin/rclone ] && echo -e "\e[1;32mgclone已重命名.\e[0m" || cp /usr/bin/gclone /usr/bin/rclone            #重命名gclone
 git clone https://github.com/F-gq/AutoRclone.git;\mv -f /root/AutoRclone/rclone.conf /root/.config/rclone/    #安装AutoRclone
-[ -e /usr/local/bin/aria2c ] && echo aria2已安装! || bash <(https://raw.githubusercontent.com/P3TERX/aria2.sh/master/aria2.sh)
+[ -e /usr/local/bin/aria2c ] && echo aria2已安装! || bash <(curl https://raw.githubusercontent.com/P3TERX/aria2.sh/master/aria2.sh)
 \mv -f /root/AutoRclone/aria2.conf /root/.aria2c/aria2.conf                                      #替换aria2配置文件
 read -p "请输入用gclone设置的挂载名称:" name
 echo 请输入上传路径，例如：根目录填/，根目录下的1文件夹输入/1.以此类推。

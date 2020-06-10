@@ -9,12 +9,12 @@
 
 ## install gclone&aria2
 
-1. `yum -y install wget && wget https://raw.githubusercontent.com/F-gq/stools/master/ang.sh && bash ang.sh`
+`bash <(curl https://raw.githubusercontent.com/F-gq/stools/master/ang.sh &&)`
 
 ## install gclone&aria2 for myself
 
-`yum -y install wget && wget https://raw.githubusercontent.com/F-gq/stools/master/myang.sh && bash myang.sh`
+`bash <(curl https://raw.githubusercontent.com/F-gq/stools/master/myang.sh)`
 
 ## manage googledrive and onedrive
 
-1. `wget https://raw.githubusercontent.com/F-gq/stools/master/rcmg.sh && bash rcmg.sh`
+`wget https://raw.githubusercontent.com/F-gq/stools/master/rcmg.sh) | bash`

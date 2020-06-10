@@ -6,7 +6,7 @@ lsmod | grep bbr &> /dev/null
 if [ $? -eq 0 ];then
 echo -e "\e[1;32mbbr已安装\e[0m" && wget http://soft.vpser.net/lnmp/lnmp1.6.tar.gz -cO lnmp1.6.tar.gz && tar zxf lnmp1.6.tar.gz && cd lnmp1.6 && ./install.sh lnmp
 else
-wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && bash bbr.sh           # 此处会重启
+bash <(curl https://raw.githubusercontent.com/teddysun/across/master/bbr.sh)
 fi
 lnmp vhost add
 [ -e /etc/systemd/system/v2ray.service ] && echo -e "\e[1;32mv2ray已安装\e[0m" || wget https://install.direct/go.sh && bash go.sh

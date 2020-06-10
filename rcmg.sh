@@ -1,6 +1,10 @@
 #!/usr/bin/bash
 #rclone manage remote drive
-rpm -q unar &>/dev/null && echo -e "\e[1;33munar已安装.\e[0m" || yum -y install unar
+if [ rpm -q unar &>/dev/null ]; then
+    echo -e "\e[1;33munar已安装.\e[0m"
+else
+    yum -y install epel-release && yum -y install unar
+fi
 rpm -q zip &>/dev/null && echo -e "\e[1;33mzip已安装.\e[0m" || yum -y install zip
 #start
 echo -e "\e[1;32m1.清空垃圾桶\n2.挂载网盘\n3.查看文件夹大小.\n4.查重\n5.跨网盘转存文件（od-gd）.\n6.打包单个文件夹.\n7.批量打包文件夹.\n8.（批量）解压文件.\n9.卸载网盘\n10.查看压缩包内容(测试确定字符编码，解决乱码问题)\e[0m"
