@@ -17,8 +17,8 @@ git clone https://github.com/F-gq/AutoRclone.git;\mv -f /root/AutoRclone/rclone.
 read -p "请输入用gclone设置的挂载名称:" name
 echo 请输入上传路径，例如：根目录填/，根目录下的1文件夹输入/1.以此类推。
 read -p "请输入上传路径：" path
-mkdir -p /home/$name
-rclone mount $name: /home/$name --allow-other --allow-non-empty --vfs-cache-mode writes &        #挂载Googledrive
+mkdir -p /mnt/$name
+rclone mount $name: /mnt/$name --allow-other --allow-non-empty --vfs-cache-mode writes &        #挂载Googledrive
 sed -i "20s/Onedrive/$name/g" /root/.aria2c/autoupload.sh
 sed -i "23s|/DRIVEX/Download|$path|g" /root/.aria2c/autoupload.sh
 service aria2 restart
