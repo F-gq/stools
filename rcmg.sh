@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 #rclone manage remote drive
-if [ rpm -q unar &>/dev/null ]; then
+rpm -q unar &>/dev/null
+if [ $? -eq 0 ]; then
     echo -e "\e[1;33munar已安装.\e[0m"
 else
     yum -y install epel-release && yum -y install unar
