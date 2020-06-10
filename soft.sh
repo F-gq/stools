@@ -1,4 +1,5 @@
 yum -y install updata                                                                            #安装更新
+rpm -q vim &>/dev/null && echo -e "\e[1;32mvim已安装.\e[0m" || yum -y install vim
 rpm -q git &>/dev/null && echo -e "\e[1;32mgit已安装.\e[0m" || yum -y install git                                  #安装git
 rpm -q zip &>/dev/null && echo -e "\e[1;32mzip已安装.\e[0m" || yum -y install zip
 rpm -q unar &>/dev/null && echo -e "\e[1;32munar已安装.\e[0m" || yum -y install unar

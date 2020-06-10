@@ -14,7 +14,7 @@ read -p "请依次输入域名、反代域名、alterid(数字)、分流路径�
 id=$(cat /proc/sys/kernel/random/uuid)
 sed -i "s/\$domain/$domain/g" /root/domain.conf
 sed -i "s/\$proxydomain/$proxydomain/g" /root/domain.conf
-sed -i "s|path1|$path|g" /root/domain.conf                      #解决sed中环境变量替换
+sed -i "s|path|$path|g" /root/domain.conf                      #解决sed中环境变量替换
 sed -i "s/\$port/$port/g" /root/domain.conf
 sed -i "s/\$port/$port/g" /root/v2ray.json
 sed -i "s|path1|$path|g" /root/v2ray.json
@@ -25,3 +25,8 @@ sed -i "s/\$alterid/$alterid/g" /root/v2ray.json
 nginx -s reload
 systemctl restart v2ray
 systemctl status v2ray
+echo -e "\e[1;32m域名:\e[0m$domain"
+echo -e "\e[1;32m端口:\e[0m443"
+echo -e "\e[1;32muuid:\e[0m$id"
+echo -e "\e[1;32m额外id:\e[0m$alterid"
+echo -e "\e[1;32m分流路径:\e[0m$path"
