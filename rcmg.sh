@@ -25,32 +25,30 @@ elif [ $num -eq 3 ]; then
 elif [ $num -eq 4 ]; then
     read -p "请输入文件夹路径:" dirpath
     teampath="${dirpath#/*/}" && remote="${teampath/\//:}"
-    gclone dedupe newest $remote -vP --disable listr --transfers=10
+    gclone dedupe newest $remote -vP --dedupe-mode skip
 elif [ $num -eq 5 ]; then
     read -p "请输入源文件（夹）路径和目的文件夹路径，用空格隔开：" spath dpath
-    teampath1="${spath#/*/}" && remote1="${teampath1/\//:}"
-    teampath2="${dpath#/*/}" && remote2="${teampath2/\//:}"
-    nohup gclone copy $remote1 $remote2 --drive-server-side-across-configs -vP --transfers=1 &
+    teampath1="${spath#/*/}" && remote1="${teampath1/\//:/}"
+    teampath2="${dpath#/*/}" && remote2="${teampath2/\//:/}"
+    nohup gclone copy $remote1 $remote2 --drive-server-side-across-configs -vP --transfers=20 &
 elif [ $num -eq 6 ]; then
     read -p "请输入文件夹路径：" dirpath
     filename="${dirpath##*/}"
-    nohup zip -r /mnt/aabc/zip/$filename.zip $dirpath &>/dev/null &
+    nohup zip -r /mnt/aabc/zip/$filename.zip $dirpath &
 elif [ $num -eq 7 ]; then
     echo -e "\e[1;33m注意只会批量压缩指定目录下的一级子文件夹，二级以后不会压缩，压缩前请将文件夹整理规范。\e[0m"
     read -p "请输入文件夹路径：" dirpath
-    nohup ls -Al $dirpath | grep "^d" | awk '{print $9}' | xargs -i zip -r /mnt/aabc/zip/{}.zip $dirpath/{} &>/dev/null &
+    nohup ls -Al $dirpath | grep "^d" | awk '{print $9}' | xargs -i zip -r /mnt/aabc/zip/{}.zip $dirpath/{} &
 elif [ $num -eq 8 ]; then
     read -p "请输入文件（夹）路径：" path && export path
     if [ -d $path ]; then
-        nohup ls -Al $path | grep -E '.*zip|.*rar|.*tar|.*gz|.*7z' | awk '{print $9}' | xargs -i unar -f $path/{} -o mnt/scu/sort/unzip &>/dev/null &
+        nohup ls -Al $path | grep -E '.*zip|.*rar|.*tar|.*gz|.*7z' | awk '{print $9}' | xargs -i unar -f $path/{} -o mnt/scu/sort/unzip &
     else
         read -p "请输入指定编码方式（乱码时使用，无则回车）：" encode
         if [ -z "$encode" ]; then
-            nohup unar $path -o mnt/scu/sort/unzip &
-            echo -e "\e[1;32m请先输入回车，再输入tail -f nohup.out查看解压详情\e[0m"
+            unar -f $path -o mnt/scu/sort/unzip1
         else
-            nohup unar -e $encode $path -o mnt/scu/sort/unzip &
-            echo -e "\e[1;32m请先输入回车，再输入tail -f nohup.out查看解压详情\e[0m"
+            unar -e -f $encode $path -o mnt/scu/sort/unzip
         fi
     fi
 elif [ $num -eq 9 ]; then
