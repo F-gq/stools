@@ -13,8 +13,9 @@ rpm -q screen &>/dev/null && echo -e "\e[1;32mscreen已安装.\e[0m" || yum -y i
 git clone https://github.com/F-gq/AutoRclone.git;\mv -f /root/AutoRclone/rclone.conf /root/.config/rclone/     #安装相关软件、配置
 [ -e /usr/local/bin/aria2c ] && echo -e "\e[1;32maria2已安装。\e[0m" || bash <(curl https://raw.githubusercontent.com/P3TERX/aria2.sh/master/aria2.sh)
 \mv -f /root/AutoRclone/autoupload.sh /root/.aria2c/autoupload.sh;\mv -f /root/AutoRclone/aria2.conf /root/.aria2c/aria2.conf                                #替换aria2配置文件
+\mv -f /root/AutoRclone/copy.sh /root/;\mv -f /root/AutoRclone/rcmg.sh /root/
 echo -ne "\e[1;33m请输入用gclone设置的挂载名称:\e[0m" && read name
-echo -ne "\e[1;32m请输入上传路径，例如：根目录填/，根目录下的1文件夹输入/1.以此类推。\e[0m"
+echo -e "\e[1;32m请输入上传路径，例如：根目录填/，根目录下的1文件夹输入/1.以此类推。\e[0m"
 echo -ne "\e[1;33m请输入上传路径：\e[0m" && read path
 mkdir -p /mnt/$name
 rclone mount $name: /mnt/$name --allow-other --allow-non-empty --vfs-cache-mode writes &        #挂载Googledrive
