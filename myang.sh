@@ -2,6 +2,7 @@
 #aria2 and gclone.Use aria2 and gclone to download,manage and copy files.
 export copy.sh=/root/AutoRclone/copy.sh
 export rcmg=/root/AutoRclone/rcmg.sh
+mkdir /data
 yum -y install updata                                                                   #安装更新
 rpm -q git &>/dev/null && echo -e "\e[1;32mgit已安装.\e[0m" || yum -y install git                                  #安装git
 rpm -q wget &>/dev/null && echo -e "\e[1;32mwget已安装.\e[0m" || yum -y install wget                               #安装wget
