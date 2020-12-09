@@ -12,7 +12,8 @@ rpm -q screen &>/dev/null && echo -e "\e[1;32mscreen已安装.\e[0m" || yum -y i
 [ -e /usr/bin/gclone ] && echo -e "\e[1;32mgclone已安装.\e[0m" || bash <(wget -qO- https://git.io/gclone.sh)      #安装gclone
 [ -e /usr/bin/rclone ] && echo -e "\e[1;32mgclone已重命名.\e[0m" || cp /usr/bin/gclone /usr/bin/rclone            #重命名gclone
 git clone https://github.com/F-gq/AutoRclone.git;\mv -f /root/AutoRclone/rclone.conf /root/.config/rclone/     #安装相关软件、配置
-[ -e /usr/local/bin/aria2c ] && echo -e "\e[1;32maria2已安装。\e[0m" || bash <(curl https://raw.githubusercontent.com/P3TERX/aria2.sh/master/aria2.sh)
+[ -e /usr/local/bin/aria2c ] && echo -e "\e[1;32maria2已安装。\e[0m" || wget https://raw.githubusercontent.com/P3TERX/aria2.sh/master/aria2.sh
+chmod u+x /root/aria2.sh && bash aria2.sh
 \mv -f /root/AutoRclone/autoupload.sh /root/.aria2c/autoupload.sh;\mv -f /root/AutoRclone/aria2.conf /root/.aria2c/aria2.conf                                #替换aria2配置文件
 \mv -f /root/AutoRclone/copy.sh /root/;\mv -f /root/AutoRclone/rcmg.sh /root/
 chmod a+x /root/.aria2c/autoupload.sh
